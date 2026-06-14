@@ -19,4 +19,6 @@ void reinserirnota(App *app);
 
 void criarnota(App *app, const Nota *padrão);
 
+void gravarnotas(App *app);
+
 #endif

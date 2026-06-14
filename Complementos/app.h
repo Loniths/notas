@@ -40,6 +40,7 @@ typedef struct
 typedef struct
 {
     Nota *notas;
+    Nota padrão;
     int ocupados;
     int capacidade;
     int notaativa;

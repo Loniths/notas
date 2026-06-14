@@ -106,3 +106,16 @@ void criarnota(App *app, const Nota *padrão)
     // ela vai ser chamada em um for loop
     app->ocupados++;
 }
+
+void gravarnotas(App *app)
+{
+    FILE *arq;
+    arq = fopen("notas", "wt");
+    for(int i = 0; i < app->ocupados; i++)
+    {
+        fprintf(arq, "%3s %d %d %d %d %d %d %d \"%s\"\n", app->notas[i].etiqueta, app->notas[i].cor.r,
+        app->notas[i].cor.g, app->notas[i].cor.b, app->notas[i].retangulo.x, app->notas[i].retangulo.y,
+        app->notas[i].retangulo.largura, app->notas[i].retangulo.altura, app->notas[i].texto);
+    }
+    fclose(arq);
+}
