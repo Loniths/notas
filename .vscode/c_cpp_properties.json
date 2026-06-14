@@ -1,0 +1,29 @@
+{
+  "configurations": [
+    {
+      "name": "Win32 (MinGW)",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "C:/MinGW/include",
+        "C:/MinGW/lib/gcc/mingw32/6.3.0/include"
+      ],
+      "defines": [],
+      "compilerPath": "C:/MinGW/bin/gcc.exe",
+      "cStandard": "gnu17",
+      "intelliSenseMode": "windows-gcc-x64"
+    },
+    {
+      "name": "WSL Debian",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "\\\\wsl.localhost\\Debian\\usr\\include",
+        "\\\\wsl.localhost\\Debian\\usr\\include\\x86_64-linux-gnu"
+      ],
+      "defines": [],
+      "compilerPath": "\\\\wsl.localhost\\Debian\\usr\\bin\\gcc",
+      "cStandard": "gnu17",
+      "intelliSenseMode": "linux-gcc-x64"
+    }
+  ],
+  "version": 4
+}

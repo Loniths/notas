@@ -1,0 +1,53 @@
+#ifndef APP_H
+#define APP_H
+
+#include <stdbool.h>
+
+typedef enum
+{
+    PRINCIPAL,
+    EDITAR_TEXTO,
+    EDITAR_ETIQUETA,
+    EDITAR_COR,
+    BUSCAR_TEXTO,
+    BUSCAR_ETIQUETA,
+    TERMINAR,
+} Modo;
+
+typedef struct cor
+{
+    int r;
+    int g;
+    int b;
+} Cor;
+
+typedef struct retangulo
+{
+    int x;
+    int y;
+    int largura;
+    int altura;
+} Ret;
+
+typedef struct
+{
+    char texto[256];
+    char etiqueta[4];
+    Cor cor;
+    Ret retangulo;
+} Nota;
+
+typedef struct
+{
+    Nota *notas;
+    int ocupados;
+    int capacidade;
+    int notaativa;
+    Modo modo;
+    char filtrotexto[100];
+    char filtroetiqueta[4];
+    Nota removida;
+    bool temremovida;
+} App;
+
+#endif
