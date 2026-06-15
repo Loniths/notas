@@ -6,7 +6,7 @@
 
 // arquivo dedicado as funções dos modos do programa
 
-void principal(Nota notas[], App *app)
+void funcprincipal(Nota notas[], App *app)
 {
     //função do modo principal
 

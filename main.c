@@ -4,6 +4,7 @@
 #include "Complementos/app.h"
 #include "Complementos/vetor.h"
 #include "Complementos/tela.h"
+#include "Complementos/modos.h"
 
 int main()
 {
@@ -48,8 +49,16 @@ int main()
     // devem seguir juntas
     app.modo = PRINCIPAL;
     t_inicia();
+    int larguratela, alturatela;
+    t_tamanho(&larguratela, &alturatela);
+    app.padrão = (Nota){"", "000", {255, 255, 255}, larguratela / 2, alturatela / 2, 20, 10};
     while(app.modo != TERMINAR)
     {
-
+        switch(app.modo)
+        {
+            case PRINCIPAL:
+                funcprincipal(app.notas, &app);
+                break;
+        }
     }
 } 

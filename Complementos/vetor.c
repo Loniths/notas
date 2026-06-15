@@ -60,7 +60,11 @@ bool dobrarvet(App *app)
     // fiz ela pq vi que muitas vezes essa linha ia se repetir
     // ent facilita a escrita e leitura do código
     // eu acho
-    int novacapacidade = app->capacidade * 2;
+    int novacapacidade =(app->capacidade > 0) ? app->capacidade * 2 : 10;
+    // caso por algum problema demoniaco
+    // a capacidade seja 0
+    // o programa n vai quebrar
+    // espero eu
     Nota *temp = expandirvet(app->notas, novacapacidade);
     if(temp == NULL)
     {
