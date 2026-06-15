@@ -71,7 +71,7 @@ void escrevetexto(Nota *nota)
     }
 }
 
-void desenharetangulo(App *app, int indicador)
+void desenhanota(App *app, int indicador)
 {
     t_corfundo(app->notas[indicador].cor.r, app->notas[indicador].cor.g, app->notas[indicador].cor.b);
     desenharfundo(&app->notas[indicador]);
@@ -85,3 +85,13 @@ void desenharetangulo(App *app, int indicador)
     // vou ainda rever um jeito de ajeitar isso
     t_cornormal();
 }  
+
+void todasnotas(App *app)
+{
+    if(app->ocupados <= 0) return;
+    for(int i = 0; i < app->ocupados; i++)
+    {
+        if(i != app->notaativa) desenhanota(app, i);
+    }
+    desenhanota(app, app->notaativa);
+}

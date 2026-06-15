@@ -3,13 +3,14 @@
 #include "app.h"
 #include "tela.h"
 #include "vetor.c"
+#include "desenho.h"
+#include "cursor.h"
 
 // arquivo dedicado as funções dos modos do programa
 
 void funcprincipal(Nota notas[], App *app)
 {
-    //função do modo principal
-
+    todasnotas(app);
     if(t_tecla() == 'i')
     {
         app->notaativa = 0;
@@ -45,5 +46,13 @@ void funcprincipal(Nota notas[], App *app)
     if(t_tecla() == 'b')
     {
         app->modo == BUSCAR_TEXTO;
+    }
+    if(t_tecla() == 'h' || t_tecla() == T_ESQUERDA)
+    {
+        movcursoresq(app);
+    }
+    if(t_tecla() == 'j' || t_tecla == T_CIMA)
+    {
+        
     }
 }

@@ -29,12 +29,20 @@ typedef struct retangulo
     int altura;
 } Ret;
 
+typedef struct CursorNota
+{
+    int x;
+    int y;
+} CursorNota;
+
+
 typedef struct
 {
     char texto[256];
     char etiqueta[4];
     Cor cor;
     Ret retangulo;
+    CursorNota cursor;
 } Nota;
 
 typedef struct

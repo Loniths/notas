@@ -51,13 +51,16 @@ int main()
     t_inicia();
     int larguratela, alturatela;
     t_tamanho(&larguratela, &alturatela);
-    app.padrão = (Nota){"", "000", {255, 255, 255}, larguratela / 2, alturatela / 2, 20, 10};
+    app.padrão = (Nota){"", "000", {255, 255, 255}, {larguratela / 2, alturatela / 2, 20, 10}, {1, 1}};
     while(app.modo != TERMINAR)
     {
         switch(app.modo)
         {
             case PRINCIPAL:
                 funcprincipal(app.notas, &app);
+                break;
+
+            default:
                 break;
         }
     }
