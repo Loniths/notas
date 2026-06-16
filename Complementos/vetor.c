@@ -136,7 +136,38 @@ void verificarnotaatual(App *app)
             if(app->cursor.y >= app->notas[i].retangulo.y && app->cursor.y <= app->notas[i].retangulo.y + app->notas[i].retangulo. altura - 1)
                 {
                     app->notaativa = i;
+                    return;
                 }
         }
+    }
+    app->notaativa = -1;
+}
+
+void removtextogeral(char vetor[], int alvo)
+{
+    for(int i = alvo;; i++)
+    {
+        vetor[i] = vetor[i+1];
+        if(vetor[i+1] == '\0') return;
+    }
+}
+
+void textoremoveranterior(char texto[], App *app)
+{
+    if(app->cursor.x == 0)
+    {
+        if(app->cursor.y == 0)
+        {
+            return;
+        }
+        int larguratela;
+        int lixo;
+        t_tamanho(&larguratela, &lixo);
+        int linha = app->cursor.y;
+        removtextogeral(texto, larguratela - linha);
+    }
+    else
+    {
+        removtextogeral(texto, app->cursor.x - 1);
     }
 }

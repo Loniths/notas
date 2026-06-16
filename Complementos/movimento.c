@@ -175,7 +175,7 @@ void diminuirretcima(App *app)
     {
         return;
     }
-    if(app->cursor.y == app->notas[app->nootaativa].retangulo.y)
+    if(app->cursor.y == app->notas[app->notaativa].retangulo.y)
     {
         app->cursor.y++;
     }

@@ -23,4 +23,6 @@ void todasnotas(App *app);
 
 void desenhartela(App *app);
 
+void desenhaapenastexto(char texto[], App *app);
+
 #endif

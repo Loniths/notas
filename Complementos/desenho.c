@@ -101,3 +101,29 @@ void desenhartela(App *app)
     t_lincol(app->cursor.y, app->cursor.x);
     printf("_");
 }
+
+void desenhaapenastexto(char texto[], App *app)
+{
+    t_lincol(0, 0);
+    int larguratela;
+    int alturatela;
+    t_tamanho(&larguratela, &alturatela);
+    int k = 0;
+    for(int i = 0; i <= alturatela; i++)
+    {
+        for(int j = 0; j <= alturatela; j++)
+        {
+            t_lincol(i, j);
+            if(texto[k] == '\0') 
+            {
+                app->cursor.x = 0;
+                app->cursor.y = 0;
+                t_lincol(0,0);
+                printf("_");
+                return;
+            }
+            printf("%c", texto[k]);
+            k++;
+        }
+    }
+}

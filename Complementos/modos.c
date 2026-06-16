@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "app.h"
 #include "tela.h"
-#include "vetor.c"
+#include "vetor.h"
 #include "desenho.h"
 #include "movimento.h"
 
@@ -150,6 +150,34 @@ void funcprincipal(Nota notas[], App *app)
 
 void funceditatexto(App *app)
 {
-    
+    if(app->notaativa == -1) 
+    {
+        app->modo = PRINCIPAL;
+        return;
+    }
+    char textoeditavel[256];
+    strcpy(textoeditavel, app->notas[app->notaativa].texto);
+    t_limpa();
+    desenhaapenastexto(textoeditavel, app);
+    switch(t_tecla())
+    {
+        case T_ENTER:
+            strcpy(app->notas[app->notaativa].texto, textoeditavel);
+            app->modo = PRINCIPAL;
+            break;
+        
+        case T_CTRL_C:
+        case T_ESC:
+            app->modo = PRINCIPAL;
+            break;
+
+        case T_CTRL_B:
+        case T_BACKSPACE:
+            textoremoveranterior(textoeditavel, app);
+            break;
+
+        default:
+            break;
+    }
 }
 

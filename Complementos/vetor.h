@@ -23,4 +23,8 @@ void gravarnotas(App *app);
 
 void verificarnotaatual(App *app);
 
+void removtextogeral(char vetor[], int alvo);
+
+void textoremoveranterior(char texto[], App *app);
+
 #endif
