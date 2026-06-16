@@ -4,55 +4,109 @@
 #include "tela.h"
 #include "vetor.c"
 #include "desenho.h"
-#include "cursor.h"
+#include "movimento.h"
 
 // arquivo dedicado as funções dos modos do programa
 
 void funcprincipal(Nota notas[], App *app)
 {
-    todasnotas(app);
-    if(t_tecla() == 'i')
+    desenhartela (app);
+    switch(t_tecla())
     {
-        app->notaativa = 0;
-    }
-    if(t_tecla() == 'f')
-    {
-        app->notaativa = app->ocupados - 1;
-        // se tem uma nota, ocupados = 1, e a nota esta em notas[0]
-        // por isso ocupados - 1
-    }
-    if(t_tecla() == 'd' || t_tecla() == T_DEL)
-    {
-        excluirnota(app, app->notaativa);
-        // função presente em vetor.c    
-    }
-    if(t_tecla() == 'L' || t_tecla() == T_INS)
-    {
-        reinserirnota(app);
-        // função presente em vetor.c
-    }
-    if(t_tecla() == 'n')
-    {
-        criarnota(app, &app->padrão);
-    }
-    if(t_tecla() == 'g')
-    {
-        gravarnotas(app);
-    }
-    if(t_tecla() == 'e')
-    {
-        app->modo = EDITAR_TEXTO;
-    }
-    if(t_tecla() == 'b')
-    {
-        app->modo == BUSCAR_TEXTO;
-    }
-    if(t_tecla() == 'h' || t_tecla() == T_ESQUERDA)
-    {
-        movcursoresq(app);
-    }
-    if(t_tecla() == 'j' || t_tecla == T_CIMA)
-    {
+        case 'i':
+            app->notaativa = 0;
+            break;
+
+        case 'f':
+            app->notaativa = app->ocupados - 1;
+            break;
+
+        case 'd':
+        case T_DEL:
+            excluirnota(app, app->notaativa);
+            break;
+
+        case 'I':
+        case T_INS:
+            reinserirnota(app);
+            break;
+
+        case 'n':
+            criarnota(app, &app->padrão);
+            break;
+
+        case 'g':
+            gravarnotas(app);
+            break;
+
+        case 'e':
+            app->modo = EDITAR_TEXTO;
+            break;
+
+        case 'b':
+            app->modo = BUSCAR_TEXTO;
+            break;
+
+        case 'h':
+        case T_ESQUERDA:
+            movcursoresq(app);
+            break;
+
+        case 'j':
+        case T_BAIXO:
+            movcursorbaixo(app);
+            break;
+
+        case 'k':
+        case T_CIMA:
+            movcursorcima;
+            break;
         
+        case 'l':
+        case T_DIREITA:
+            movcursordir(app);
+            break;
+        
+        case 'H':
+        case T_SM_ESQUERDA:
+            movretesq(app);
+            break;
+        
+        case 'J':
+        case T_SM_CIMA:
+            movretcima(app);
+            break;
+        
+        case 'K':
+        case T_SM_BAIXO:
+            movretbaixo(app);
+            break;
+
+        case 'L':
+        case T_SM_DIREITA:
+            movretdir(app);
+            break;
+
+        case T_CTRL_H:
+        case T_C_ESQUERDA:
+            aumentaretesq(app);
+            break;
+        
+        case T_CTRL_J:
+        case T_C_CIMA:
+            aumentaretcima(app);
+            break;
+
+        case T_CTRL_K:
+        case T_C_BAIXO:
+            aumentaretbaixo(app);
+            break;
+        
+        case T_CTRL_L:
+        case T_C_DIREITA:
+            aumentarretdir(app);
+            break;
+        
+        default:
+            break;
     }
-}

@@ -15,8 +15,8 @@ void desenharfundo(Nota *nota)
     int largura = nota->retangulo.largura;
     int altura = nota->retangulo.altura;
     int direita = x + largura - 1;
-    int chao = y + altura - 1;
-    for(int linha = y; linha <= chao; linha++)
+    int teto = y + altura - 1;
+    for(int linha = y; linha <= teto; linha++)
     {
         for(int coluna = x; coluna <= direita; coluna++)
         {
@@ -57,9 +57,9 @@ void escrevetexto(Nota *nota)
     int largura = nota->retangulo.largura;
     int altura = nota->retangulo.altura;
     int pontadireita = x + largura - 1;
-    int chao = y + altura - 1;
+    int teto = y + altura - 1;
     int interador = 0;
-    for(int linha = y + 1; linha < chao; linha++)
+    for(int linha = y + 1; linha < teto; linha++)
     {
         for(int coluna = x + 1; coluna < pontadireita; coluna++)
         {
@@ -94,4 +94,12 @@ void todasnotas(App *app)
         if(i != app->notaativa) desenhanota(app, i);
     }
     desenhanota(app, app->notaativa);
+}
+
+void desenhartela(App *app)
+{
+    todasnotas(app);
+    int ativa = app->notaativa;
+    t_lincol(app->notas[ativa].retangulo.y + app->notas[ativa].cursor.y, app->notas[ativa].retangulo.x + app->notas[ativa].cursor.x);
+    printf("_");
 }
