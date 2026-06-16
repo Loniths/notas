@@ -98,7 +98,6 @@ void todasnotas(App *app)
 void desenhartela(App *app)
 {
     todasnotas(app);
-    int ativa = app->notaativa;
     t_lincol(app->cursor.y, app->cursor.x);
     printf("_");
 }

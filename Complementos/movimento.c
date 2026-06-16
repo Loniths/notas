@@ -62,20 +62,20 @@ void movretdir(App *app)
 
 void movretbaixo(App *app)
 {
-    if(app->notas[app->notaativa].retangulo.y > 0)
+    int alturatela;
+    int lixo;
+    t_tamanho(&lixo, &alturatela);
+    if( app->notas[app->notaativa].retangulo.y + app->notas[app->notaativa].retangulo.altura - 1 < alturatela)
     {
-        app->notas[app->notaativa].retangulo.y--;
+        app->notas[app->notaativa].retangulo.y++;
     }
 }
 
 void movretcima(App *app)
 {
-    int alturatela;
-    int lixo;
-    t_tamanho(&lixo, &alturatela);
-    if(app->notas[app->notaativa].retangulo.y < alturatela)
+    if(app->notas[app->notaativa].retangulo.y > 0)
     {
-        app->notas[app->notaativa].retangulo.y++;
+        app->notas[app->notaativa].retangulo.y--;
     }
 }
 
@@ -109,11 +109,14 @@ void aumentaretcima(App *app)
     int alturatela;
     int lixo;
     t_tamanho(&lixo, &alturatela);
-    if(app->notas[app->notaativa].retangulo.y < alturatela &&
-        app->notas[app->notaativa].retangulo.y + app->notas[app->notaativa].retangulo.altura - 1 < alturatela)
+    if(app->notas[app->notaativa].retangulo.y > 0)
+    {
+        if(app->notas[app->notaativa].retangulo.y + app->notas[app->notaativa].retangulo.altura - 1 < alturatela)
         {
+            app->notas[app->notaativa].retangulo.y--;
             app->notas[app->notaativa].retangulo.altura++;
         }
+    }
 }
 
 void aumentaretbaixo(App *app)
@@ -121,12 +124,13 @@ void aumentaretbaixo(App *app)
     int alturatela;
     int lixo;
     t_tamanho(&lixo, &alturatela);
-    if(app->notas[app->notaativa].retangulo.y > 0 &&
-        app->notas[app->notaativa].retangulo.y + app->notas[app->notaativa].retangulo.altura - 1 < alturatela)
+    if(app->notas[app->notaativa].retangulo.y < alturatela)
+    {
+        if(app->notas[app->notaativa].retangulo.y + app->notas[app->notaativa].retangulo.altura - 1 < alturatela)
         {
-            movretbaixo(app);
             app->notas[app->notaativa].retangulo.altura++;
         }
+    }
 }
 
 void diminuirretesqr(App *app)
@@ -135,9 +139,8 @@ void diminuirretesqr(App *app)
     {
         return;
     }
-    // nao é necessario mexer no cursor, pq ele é relativo a nota
-    // e nao a tela inteira
     app->notas[app->notaativa].retangulo.largura--;
+    //adicionar movimento do cursor nas funções
 }
 
 void diminuirretdir(App *app)
@@ -158,11 +161,14 @@ void diminuirretdir(App *app)
 
 void diminuirretcima(App *app)
 {
-    if(app->notas[app->notaativa].retangulo.altura <= 1)
+    int alturatela;
+    int lixo;
+    t_tamanho(&lixo, &alturatela);
+    if(app->notas[app->notaativa].retangulo.y >= alturatela)
     {
         return;
     }
-    app->notas[app->notaativa].retangulo.altura--;
+    app->notas[app->notaativa].retangulo.y++;
 }
 
 void diminuirretbaixo(App *app)
@@ -171,6 +177,6 @@ void diminuirretbaixo(App *app)
     int lixo;
     t_tamanho(&lixo, &alturatela);
     if(app->notas[app->notaativa].retangulo.altura <= 1) return;
-    if(app->notas[app->notaativa].retangulo.y == alturatela) return;
-    app->notas[app->notaativa].retangulo.y++;
+    app->notas[app->notaativa].retangulo.altura--;
+
 }
