@@ -133,7 +133,23 @@ void funcprincipal(Nota notas[], App *app)
 
         case 'c':
             app->modo = EDITAR_COR;
+            break;
+        
+        case 't':
+            app->modo = EDITAR_ETIQUETA;
+            break;
 
+        case 'B':
+            app->modo = BUSCAR_ETIQUETA;
+            break;
+        
         default:
             break;
     }
+}
+
+void funceditatexto(App *app)
+{
+    
+}
+

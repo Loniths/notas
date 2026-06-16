@@ -2,40 +2,43 @@
 #include <stdlib.h>
 #include "app.h"
 #include "tela.h"
+#include "vetor.h"
 
 // arquivo com as funções que movem o cursor
 // e também as que modificam o retangulo
 
 void movcursoresq(App *app)
 {
-    if(app->notas[app->notaativa].cursor.x > 1)
-    {
-        app->notas[app->notaativa].cursor.x -= 1;
-    }
+    if(app->cursor.x == 0) return;
+    app->cursor.x--;
+    verificarnotaatual(app);
 }
 
 void movcursorcima(App *app)
 {
-    if(app->notas[app->notaativa].cursor.y < app->notas[app->notaativa].retangulo.altura - 2)
-    {
-        app->notas[app->notaativa].cursor.y += 1;
-    }
+    if(app->cursor.y == 0) return;
+    app->cursor.y--;
+    verificarnotaatual(app);
 }
 
 void movcursorbaixo(App *app)
 {
-    if(app->notas[app->notaativa].cursor.y > 1)
-    {
-        app->notas[app->notaativa].cursor.y -= 1;
-    }
+    int alturatela;
+    int lixo;
+    t_tamanho(&lixo, &alturatela);
+    if(app->cursor.y == alturatela) return;
+    app->cursor.y++;
+    verificarnotaatual;
 }
 
 void movcursordir(App *app)
 {
-    if(app->notas[app->notaativa].cursor.x < app->notas[app->notaativa].retangulo.largura - 2)
-    {
-        app->notas[app->notaativa].cursor.x += 1;
-    }
+    int larguratela;
+    int lixo;
+    t_tamanho(&larguratela, &lixo);
+    if(app->cursor.x == larguratela) return;
+    app->cursor.x++;
+    verificarnotaatual(app);
 }
 
 void movretesq(App *app)

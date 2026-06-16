@@ -91,15 +91,14 @@ void todasnotas(App *app)
     if(app->ocupados <= 0) return;
     for(int i = 0; i < app->ocupados; i++)
     {
-        if(i != app->notaativa) desenhanota(app, i);
+        desenhanota(app, i);
     }
-    desenhanota(app, app->notaativa);
 }
 
 void desenhartela(App *app)
 {
     todasnotas(app);
     int ativa = app->notaativa;
-    t_lincol(app->notas[ativa].retangulo.y + app->notas[ativa].cursor.y, app->notas[ativa].retangulo.x + app->notas[ativa].cursor.x);
+    t_lincol(app->cursor.y, app->cursor.x);
     printf("_");
 }

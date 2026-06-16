@@ -123,3 +123,20 @@ void gravarnotas(App *app)
     }
     fclose(arq);
 }
+
+void verificarnotaatual(App *app)
+{
+    int larguratela;
+    int alturatela;
+    t_tamanho(&larguratela, &alturatela);
+    for(int i = app->ocupados - 1; i >= 0; i--)
+    {
+        if(app->cursor.x >= app->notas[i].retangulo.x && app->cursor.x <= app->notas[i].retangulo.x + app->notas[i].retangulo.largura - 1)
+        {
+            if(app->cursor.y >= app->notas[i].retangulo.y && app->cursor.y <= app->notas[i].retangulo.y + app->notas[i].retangulo. altura - 1)
+                {
+                    app->notaativa = i;
+                }
+        }
+    }
+}

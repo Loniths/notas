@@ -21,4 +21,6 @@ void criarnota(App *app, const Nota *padrão);
 
 void gravarnotas(App *app);
 
+void verificarnotaatual(App *app);
+
 #endif

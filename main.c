@@ -48,6 +48,8 @@ int main()
     // agora começa a parte que tanto a com leitura quanto a sem
     // devem seguir juntas
     app.modo = PRINCIPAL;
+    app.cursor.y = 1;
+    app.cursor.x = 1;
     t_inicia();
     int larguratela, alturatela;
     t_tamanho(&larguratela, &alturatela);

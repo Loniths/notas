@@ -32,11 +32,11 @@ typedef struct retangulo
     int altura;
 } Ret;
 
-typedef struct CursorNota
+typedef struct Cursorapp
 {
     int x;
     int y;
-} CursorNota;
+} Cursorapp;
 
 
 typedef struct
@@ -45,13 +45,13 @@ typedef struct
     char etiqueta[4];
     Cor cor;
     Ret retangulo;
-    CursorNota cursor;
 } Nota;
 
 typedef struct
 {
     Nota *notas;
     Nota padrão;
+    Cursorapp cursor;
     int ocupados;
     int capacidade;
     int notaativa;
