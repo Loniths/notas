@@ -26,3 +26,11 @@ void aumentarretdir(App *app);
 void aumentaretcima(App *app);
 
 void aumentaretbaixo(App *app);
+
+void diminuirretesqr(App *app);
+
+void diminuirretdir(App *app);
+
+void diminuirretcima(App *app);
+
+void diminuirretbaixo(App *app);

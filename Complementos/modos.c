@@ -107,6 +107,33 @@ void funcprincipal(Nota notas[], App *app)
             aumentarretdir(app);
             break;
         
+        case T_CTRL_Y:
+        case T_A_ESQUERDA:
+            diminuirretesqr(app);
+            break;
+
+        case T_CTRL_U:
+        case T_A_CIMA:
+            diminuirretcima(app);
+            break;
+        
+        case T_CTRL_I:
+        case T_A_BAIXO:
+            diminuirretbaixo(app);
+            break;
+
+        case T_CTRL_O:
+        case T_A_DIREITA:
+            diminuirretdir(app);
+            break;
+        
+        case 'p':
+            app->notaativa = app->ocupados - 1;
+            break;
+
+        case 'c':
+            app->modo = EDITAR_COR;
+
         default:
             break;
     }

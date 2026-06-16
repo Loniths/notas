@@ -125,3 +125,49 @@ void aumentaretbaixo(App *app)
             app->notas[app->notaativa].retangulo.altura++;
         }
 }
+
+void diminuirretesqr(App *app)
+{
+    if(app->notas[app->notaativa].retangulo.largura <= 1)
+    {
+        return;
+    }
+    // nao é necessario mexer no cursor, pq ele é relativo a nota
+    // e nao a tela inteira
+    app->notas[app->notaativa].retangulo.largura--;
+}
+
+void diminuirretdir(App *app)
+{
+    int larguratela;
+    int lixo;
+    t_tamanho(&larguratela, &lixo);
+    if(app->notas[app->notaativa].retangulo.largura <= 1)
+    {
+        return;
+    }
+    if(app->notas[app->notaativa].retangulo.x == larguratela)
+    {
+        return;
+    }
+    app->notas[app->notaativa].retangulo.x++;
+}
+
+void diminuirretcima(App *app)
+{
+    if(app->notas[app->notaativa].retangulo.altura <= 1)
+    {
+        return;
+    }
+    app->notas[app->notaativa].retangulo.altura--;
+}
+
+void diminuirretbaixo(App *app)
+{
+    int alturatela;
+    int lixo;
+    t_tamanho(&lixo, &alturatela);
+    if(app->notas[app->notaativa].retangulo.altura <= 1) return;
+    if(app->notas[app->notaativa].retangulo.y == alturatela) return;
+    app->notas[app->notaativa].retangulo.y++;
+}
