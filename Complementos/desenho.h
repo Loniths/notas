@@ -9,6 +9,18 @@
 
 // arquivo de header dos desenhos
 
-void desenharetangulo(App *app, int indicador);
+void desenharfundo(Nota *nota);
+
+void linhahorizontal(Ret *ret);
+
+void linhavertical(Ret *ret);
+
+void escrevetexto(Nota *nota);
+
+void desenhanota(App *app, int indicador);
+
+void todasnotas(App *app);
+
+void desenhartela(App *app);
 
 #endif

@@ -25,6 +25,9 @@ typedef struct retangulo
 {
     int x;
     int y;
+    // resolvi definir a cordenada {x, y} como canto inferior esquerdo da nota
+    // assim x + largura - 1, é o canto direito do retangulo
+    // mesma lógica para o y
     int largura;
     int altura;
 } Ret;
