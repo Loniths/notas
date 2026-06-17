@@ -9,4 +9,6 @@
 
 void funcprincipal(Nota notas[], App *app);
 
+
+
 #endif

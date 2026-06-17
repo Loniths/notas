@@ -34,3 +34,7 @@ void diminuirretdir(App *app);
 void diminuirretcima(App *app);
 
 void diminuirretbaixo(App *app);
+
+void textomovcursoresq(App *app);
+
+void textomovcursordir(App *app, char texto[]);

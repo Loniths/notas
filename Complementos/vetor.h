@@ -27,4 +27,8 @@ void removtextogeral(char vetor[], int alvo);
 
 void textoremoveranterior(char texto[], App *app);
 
+void textoremovatual(char texto[], App *app);
+
+void textoadicionacaractere(char texto[], App *app, char letra);
+
 #endif

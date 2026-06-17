@@ -116,9 +116,7 @@ void desenhaapenastexto(char texto[], App *app)
             t_lincol(i, j);
             if(texto[k] == '\0') 
             {
-                app->cursor.x = 0;
-                app->cursor.y = 0;
-                t_lincol(0,0);
+                t_lincol(app->cursor.y, app->cursor.x);
                 printf("_");
                 return;
             }

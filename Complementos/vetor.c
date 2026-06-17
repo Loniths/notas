@@ -168,6 +168,29 @@ void textoremoveranterior(char texto[], App *app)
     }
     else
     {
-        removtextogeral(texto, app->cursor.x - 1);
+        removtextogeral(texto, app->cursor.x + app->cursor.y);
     }
+}
+
+void textoremovatual(char texto[], App *app)
+{
+    if(app->cursor.x + app->cursor.y == strlen(texto))
+    {
+        return;
+    }
+    removtextogeral(texto, app->cursor.x + app->cursor.y);
+}
+
+void textoadicionacaractere(char texto[], App *app, char letra)
+{
+    if(strlen(texto) == 256)
+    {
+        return;
+    }
+    for(int i = strlen(texto); i > app->cursor.x + app->cursor.y; i--)
+    {
+        texto[i] = texto[i-1];
+    }
+    texto[app->cursor.x + app->cursor.y] = letra;
+    texto[strlen(texto)] = '\0';
 }

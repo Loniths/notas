@@ -194,3 +194,44 @@ void diminuirretbaixo(App *app)
     }
     app->notas[app->notaativa].retangulo.altura--;
 }
+
+void textomovcursoresq(App *app)
+{
+    if(app->cursor.x == 0)
+    {
+        if(app->cursor.y > 0)
+        {
+            app->cursor.y--;
+            int larguratela;
+            int lixo;
+            t_tamanho(&larguratela, &lixo);
+            app->cursor.x = larguratela;
+        }
+        else
+        {
+            return;
+        }
+    }
+    else{
+        app->cursor.x--;
+    }
+}
+
+void textomovcursordir(App *app, char texto[])
+{
+    int larguratela;
+    int lixo;
+    t_tamanho(&larguratela, &lixo);
+    if(app->cursor.x == larguratela)
+    {
+        if(app->cursor.x + app->cursor.y < strlen(texto))
+        {
+            app->cursor.x = 0;
+            app->cursor.y++;
+        }
+        else return;
+    }
+    else{
+        app->cursor.x++;
+    }
+}

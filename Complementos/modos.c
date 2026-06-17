@@ -159,7 +159,8 @@ void funceditatexto(App *app)
     strcpy(textoeditavel, app->notas[app->notaativa].texto);
     t_limpa();
     desenhaapenastexto(textoeditavel, app);
-    switch(t_tecla())
+    tecla_t tecla = t_tecla();
+    switch(tecla)
     {
         case T_ENTER:
             strcpy(app->notas[app->notaativa].texto, textoeditavel);
@@ -176,8 +177,70 @@ void funceditatexto(App *app)
             textoremoveranterior(textoeditavel, app);
             break;
 
-        default:
+        case T_CTRL_D:
+        case T_DEL:
+            textoremovatual(textoeditavel, app);
             break;
+
+        case T_CTRL_H:
+        case T_ESQUERDA:
+            textomovcursoresq(app);
+
+        case T_CTRL_L:
+        case T_DIREITA:
+            textomovcursordir(app, textoeditavel);
+        
+        default:
+            textoadicionacaractere(textoeditavel, app, tecla);
+            break;
+    }
+}
+
+void funceditaretiqueta(App *app)
+{
+    if(app->notaativa == -1)
+    {
+        app->modo = PRINCIPAL;
+        return;
+    }
+    char ediquetaeditavel[4];
+    strcpy(ediquetaeditavel, app->notas[app->notaativa].etiqueta);
+    desenhaapenastexto(ediquetaeditavel, app);
+    switch(t_tecla())
+    {
+        case T_CTRL_C:
+        case T_ESC:
+            app->modo = PRINCIPAL;
+            break;
+        
+        case T_CTRL_B:
+        case T_BACKSPACE:
+            removtextogeral(ediquetaeditavel, strlen(ediquetaeditavel) - 1);
+            break;
+        
+        case T_ENTER:
+            if(strlen(ediquetaeditavel) == 3)
+            {
+                strcpy(app->notas[app->notaativa].etiqueta, ediquetaeditavel);
+                app->modo = PRINCIPAL;
+            }
+            break;
+
+        default:
+            if(strlen(ediquetaeditavel) == 3)
+            {
+                break;
+            }
+            int index;
+            for(int i = 0; i < 3; i++)
+            {
+                if(ediquetaeditavel[i] == '\0')
+                {
+                    index = i;
+                }
+            }
+            ediquetaeditavel[index] = t_tecla;
+            ediquetaeditavel[index + 1] = '\0';
     }
 }
 
