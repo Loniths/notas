@@ -29,7 +29,8 @@ int lernotas(FILE *arq, Nota notas[])
             if(tamanho > 0 && ajuste[tamanho - 1] == '"') // verificação para garantir que a palavra seja valida
             {
                 ajuste[tamanho - 1] = '\0';
-                strncpy(notas[i].texto, ajuste + 1, 256); // acabei só usando strncpy, pra caso eu realize alguma mudança, aqui não vire um possível erro
+                strncpy(notas[i].texto, ajuste + 1, 255);
+                notas[i].texto[255] = '\0'; // acabei só usando strncpy, pra caso eu realize alguma mudança, aqui não vire um possível erro
                 i++;
             }
         }
@@ -115,6 +116,11 @@ void gravarnotas(App *app)
 {
     FILE *arq;
     arq = fopen("notas", "wt");
+    if(arq == NULL)
+    {
+        printf("impossivel salvar");
+        return;
+    }
     for(int i = 0; i < app->ocupados; i++)
     {
         fprintf(arq, "%3s %d %d %d %d %d %d %d \"%s\"\n", app->notas[i].etiqueta, app->notas[i].cor.r,
@@ -154,31 +160,34 @@ void removtextogeral(char vetor[], int alvo)
 
 void textoremoveranterior(char texto[], App *app)
 {
-    if(app->cursor.x == 0)
+    int larguratela;
+    int lixo;
+    t_tamanho(&larguratela, &lixo);
+    if(app->cursor.x == 1)
     {
-        if(app->cursor.y == 0)
+        if(app->cursor.y == 1)
         {
             return;
         }
-        int larguratela;
-        int lixo;
-        t_tamanho(&larguratela, &lixo);
         int linha = app->cursor.y;
-        removtextogeral(texto, larguratela - linha);
+        removtextogeral(texto, larguratela * (linha - 1) - 1);
     }
     else
     {
-        removtextogeral(texto, app->cursor.x + app->cursor.y);
+        removtextogeral(texto, (app->cursor.y-1)*larguratela + (app->cursor.x-1));
     }
 }
 
 void textoremovatual(char texto[], App *app)
 {
-    if(app->cursor.x + app->cursor.y == strlen(texto))
+    int larguratela;
+    int lixo;
+    t_tamanho(&larguratela, &lixo);
+    if((app->cursor.y-1)*larguratela + (app->cursor.x-1) == strlen(texto))
     {
         return;
     }
-    removtextogeral(texto, app->cursor.x + app->cursor.y);
+    removtextogeral(texto, (app->cursor.y-1)*larguratela + (app->cursor.x-1));
 }
 
 void textoadicionacaractere(char texto[], App *app, char letra)
@@ -187,10 +196,13 @@ void textoadicionacaractere(char texto[], App *app, char letra)
     {
         return;
     }
-    for(int i = strlen(texto); i > app->cursor.x + app->cursor.y; i--)
+    int larguratela;
+    int lixo;
+    t_tamanho(&larguratela, &lixo);
+    for(int i = strlen(texto); i > (app->cursor.y-1)*larguratela + (app->cursor.x-1); i--)
     {
         texto[i] = texto[i-1];
     }
-    texto[app->cursor.x + app->cursor.y] = letra;
+    texto[(app->cursor.y-1)*larguratela + (app->cursor.x-1)] = letra;
     texto[strlen(texto)] = '\0';
 }

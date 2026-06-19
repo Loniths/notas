@@ -104,14 +104,14 @@ void desenhartela(App *app)
 
 void desenhaapenastexto(char texto[], App *app)
 {
-    t_lincol(0, 0);
+    t_lincol(1, 1);
     int larguratela;
     int alturatela;
     t_tamanho(&larguratela, &alturatela);
     int k = 0;
-    for(int i = 0; i <= alturatela; i++)
+    for(int i = 1; i <= alturatela; i++)
     {
-        for(int j = 0; j <= alturatela; j++)
+        for(int j = 1; j <= larguratela; j++)
         {
             t_lincol(i, j);
             if(texto[k] == '\0') 

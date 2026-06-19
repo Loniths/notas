@@ -9,14 +9,14 @@
 
 void movcursoresq(App *app)
 {
-    if(app->cursor.x == 0) return;
+    if(app->cursor.x == 1) return;
     app->cursor.x--;
     verificarnotaatual(app);
 }
 
 void movcursorcima(App *app)
 {
-    if(app->cursor.y == 0) return;
+    if(app->cursor.y == 1) return;
     app->cursor.y--;
     verificarnotaatual(app);
 }
@@ -28,7 +28,7 @@ void movcursorbaixo(App *app)
     t_tamanho(&lixo, &alturatela);
     if(app->cursor.y == alturatela) return;
     app->cursor.y++;
-    verificarnotaatual;
+    verificarnotaatual(app);
 }
 
 void movcursordir(App *app)
@@ -43,6 +43,7 @@ void movcursordir(App *app)
 
 void movretesq(App *app)
 {
+    if(app->notaativa == -1) return;
     if(app->notas[app->notaativa].retangulo.x > 0)
     {
         app->notas[app->notaativa].retangulo.x--;
@@ -51,6 +52,7 @@ void movretesq(App *app)
 
 void movretdir(App *app)
 {
+    if(app->notaativa == -1) return;
     int larguratela;
     int lixo;
     t_tamanho(&larguratela, &lixo);
@@ -62,6 +64,7 @@ void movretdir(App *app)
 
 void movretbaixo(App *app)
 {
+    if(app->notaativa == -1) return;
     int alturatela;
     int lixo;
     t_tamanho(&lixo, &alturatela);
@@ -73,6 +76,7 @@ void movretbaixo(App *app)
 
 void movretcima(App *app)
 {
+    if(app->notaativa == -1) return;
     if(app->notas[app->notaativa].retangulo.y > 0)
     {
         app->notas[app->notaativa].retangulo.y--;
@@ -81,6 +85,7 @@ void movretcima(App *app)
 
 void aumentaretesq(App *app)
 {
+    if(app->notaativa == -1) return;
     int larguratela;
     int lixo;
     t_tamanho(&larguratela, &lixo);
@@ -94,6 +99,7 @@ void aumentaretesq(App *app)
 
 void aumentarretdir(App *app)
 {
+    if(app->notaativa == -1) return;
     int larguratela;
     int lixo;
     t_tamanho(&larguratela, &lixo);
@@ -106,6 +112,7 @@ void aumentarretdir(App *app)
 
 void aumentaretcima(App *app)
 {
+    if(app->notaativa == -1) return;
     int alturatela;
     int lixo;
     t_tamanho(&lixo, &alturatela);
@@ -121,6 +128,7 @@ void aumentaretcima(App *app)
 
 void aumentaretbaixo(App *app)
 {
+    if(app->notaativa == -1) return;
     int alturatela;
     int lixo;
     t_tamanho(&lixo, &alturatela);
@@ -135,6 +143,7 @@ void aumentaretbaixo(App *app)
 
 void diminuirretesqr(App *app)
 {
+    if(app->notaativa == -1) return;
     if(app->notas[app->notaativa].retangulo.largura <= 1)
     {
         return;
@@ -148,6 +157,7 @@ void diminuirretesqr(App *app)
 
 void diminuirretdir(App *app)
 {
+    if(app->notaativa == -1) return;
     int larguratela;
     int lixo;
     t_tamanho(&larguratela, &lixo);
@@ -168,6 +178,7 @@ void diminuirretdir(App *app)
 
 void diminuirretcima(App *app)
 {
+    if(app->notaativa == -1) return;
     int alturatela;
     int lixo;
     t_tamanho(&lixo, &alturatela);
@@ -184,6 +195,7 @@ void diminuirretcima(App *app)
 
 void diminuirretbaixo(App *app)
 {
+    if(app->notaativa == -1) return;
     int alturatela;
     int lixo;
     t_tamanho(&lixo, &alturatela);
@@ -197,9 +209,10 @@ void diminuirretbaixo(App *app)
 
 void textomovcursoresq(App *app)
 {
-    if(app->cursor.x == 0)
+    if(app->notaativa == -1) return;
+    if(app->cursor.x == 1)
     {
-        if(app->cursor.y > 0)
+        if(app->cursor.y > 1)
         {
             app->cursor.y--;
             int larguratela;
@@ -219,14 +232,15 @@ void textomovcursoresq(App *app)
 
 void textomovcursordir(App *app, char texto[])
 {
+    if(app->notaativa == -1) return;
     int larguratela;
     int lixo;
     t_tamanho(&larguratela, &lixo);
     if(app->cursor.x == larguratela)
     {
-        if(app->cursor.x + app->cursor.y < strlen(texto))
+        if((app->cursor.y-1)*larguratela + (app->cursor.x-1) < strlen(texto))
         {
-            app->cursor.x = 0;
+            app->cursor.x = 1;
             app->cursor.y++;
         }
         else return;

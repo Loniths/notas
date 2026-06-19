@@ -5,10 +5,14 @@
 #include <stdlib.h>
 #include "app.h"
 #include "tela.h"
-#include "vetor.c"
+#include "vetor.h"
 
 void funcprincipal(Nota notas[], App *app);
 
+void funceditatexto(App *app);
 
+void funceditaretiqueta(App *app);
+
+void funceditarcor(App *app, char cor);
 
 #endif

@@ -18,11 +18,13 @@ int main()
         if(app.notas == NULL)
         {
             printf("Erro ao alocar a memória\n");
+            fclose(arq);
             return 1;
         }
         app.capacidade = linhas;
         app.ocupados = lernotas(arq, app.notas);
         app.notaativa = 0;
+        fclose(arq);
         // idealmente, todas as notas são válidas no arquivo
         // porem caso n seja, os espaços vazios vão ficar sobrando
         // sendo uteis para quando o usuario adicionar mais notas
@@ -41,7 +43,6 @@ int main()
         app.ocupados = 0;
         app.notaativa = 0;
     }
-    fclose(arq);
     // fechando o arquivo já que o ponteiro vai estar no final dele
     // se eu precisar do arquivo dnv
     // a função vai criar e abrir ele, para q dps n tenha que me incomodar ajeitando ponteiro
@@ -60,6 +61,24 @@ int main()
         {
             case PRINCIPAL:
                 funcprincipal(app.notas, &app);
+                break;
+
+            case EDITAR_TEXTO:
+                funceditatexto(&app);
+                break;
+
+            case EDITAR_ETIQUETA:
+                funceditaretiqueta(&app);
+                break;
+            
+            case EDITAR_COR:
+                tecla_t tecla;
+                tecla = t_tecla();
+                if(tecla != 'r' && tecla != 'g' && tecla != 'b'&& tecla != 'a' && tecla != 'v' && tecla != 'e')
+                {
+                    break;
+                }
+                funceditarcor(&app, tecla);
                 break;
 
             default:
