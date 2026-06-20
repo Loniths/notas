@@ -15,4 +15,8 @@ void funceditaretiqueta(App *app);
 
 void funceditarcor(App *app, char cor);
 
+void funcbuscatexto(App *app);
+
+void funcbuscaetiqueta(App *app);
+
 #endif

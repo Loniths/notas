@@ -81,8 +81,19 @@ int main()
                 funceditarcor(&app, tecla);
                 break;
 
+            case BUSCAR_TEXTO:
+                funcbuscatexto(&app);
+                break;
+            
+            case BUSCAR_ETIQUETA:
+                funcbuscaetiqueta(&app);
+                break;
+
             default:
                 break;
         }
     }
+    gravarnotas(&app);
+    free(app.notas);
+    return 0;
 } 

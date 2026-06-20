@@ -1,3 +1,6 @@
+#ifndef MOVIMENTO_H
+#define MOVIMENTO_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "app.h"
@@ -38,3 +41,5 @@ void diminuirretbaixo(App *app);
 void textomovcursoresq(App *app);
 
 void textomovcursordir(App *app, char texto[]);
+
+#endif

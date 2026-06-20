@@ -143,6 +143,9 @@ void funcprincipal(Nota notas[], App *app)
         case 'B':
             app->modo = BUSCAR_ETIQUETA;
             break;
+
+        case T_ESC:
+            app->modo = TERMINAR;
         
         default:
             break;
